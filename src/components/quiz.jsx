@@ -1,5 +1,7 @@
 //ANY JS FILE THAT INCORPORTATES A COMPONENT MUST BE A JSX FILE
 
+import { useState } from "react";
+
 //Component function should always start with a capital
 function Quiz() {
     console.log("Quiz component rendered");
@@ -32,14 +34,24 @@ function Quiz() {
 
     ];
 
+
+    const[optionSelected, setOptionSelected] = useState("None");
+
+    function handleSelectOption(option) {
+        setOptionSelected(option);
+    }
+
+
     return (
     <div> 
         <h2>Question 1</h2>
         <p className="question">{questionBank[0].question}</p>
         {questionBank[0].options.map((option) =>(
-           <button className="option">{option}</button>
+           <button className="option" onClick={() => handleSelectOption(option)}>{option}</button>
         ))}
         
+        <p>Option Selected: {optionSelected}</p>
+
         <div className="nav-buttons">
             <button>Previous</button>
             <button>Next</button>
