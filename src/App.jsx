@@ -1,5 +1,6 @@
 import './index.css';
-import Quiz from "./components/Quiz";
+import Quiz from "./components/quiz";
+import Results from "./components/results"
 
 function App() {
   console.log("App component rendered");
