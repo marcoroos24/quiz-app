@@ -25,7 +25,7 @@ function Quiz() {
     {
         question: "What sauce goes best with Five Guys fries?",
         options: ["Ketchup", "Malt vinegar", "Mayo", "Chick Fil A sauce"],
-        answer: "Paris"
+        answer: "Mayo"
     },
     {
         question: "What is the capital of France?",
@@ -35,15 +35,11 @@ function Quiz() {
 
     ];
 
-    
+    //states!
     const initialAnswers = [null, null, null, null, null];
-
     const[userAnswers, setUserAnswers] = useState(initialAnswers);
-
     const[currentQuestion, setCurrentQuestion] = useState(0);
-
     const selectedAnswer = userAnswers[currentQuestion]; //a check to see if an answer is selected yet
-
     const [isQuizFinished, setIsQuizFinished] = useState(false);
 
 
@@ -66,8 +62,19 @@ function Quiz() {
             setCurrentQuestion(currentQuestion - 1);
     }
 
+        function restartQuiz() {
+        setUserAnswers(initialAnswers);
+        setCurrentQuestion(0);
+        setIsQuizFinished(false);
+    }
+
+
     if (isQuizFinished) {
-        return <Results />
+        return <Results 
+        userAnswers={userAnswers} 
+        questionBank={questionBank} 
+        restartQuiz={restartQuiz} 
+        />;
     }
     return (
     <div> 
